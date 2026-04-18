@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ASR City</title>
+
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#ff6600">
+
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      background: #ff6600;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      color: black;
+      padding: 15px;
+      border-radius: 15px;
+      margin: 10px auto;
+      max-width: 400px;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    button {
+      background: #ff6600;
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>ASR City</h1>
+  <p>Сеть автозапчастей</p>
+
+  <div class="card">
+
+    <input id="name" placeholder="Имя">
+    <input id="part" placeholder="Запчасть">
+    <input id="phone" placeholder="Телефон">
+
+    <button onclick="send()">Оставить заявку</button>
+
+  </div>
+
+  <script>
+    function send() {
+      let name = document.getElementById("name").value;
+      let part = document.getElementById("part").value;
+      let phone = document.getElementById("phone").value;
+
+      alert("Заявка отправлена!\n" + name + " - " + part);
+
+      document.getElementById("name").value = "";
+      document.getElementById("part").value = "";
+      document.getElementById("phone").value = "";
+    }
+  </script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./service-worker.js");
+    }
+  </script>
+
+</body>
+</html>
